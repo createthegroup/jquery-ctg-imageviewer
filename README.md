@@ -1,5 +1,7 @@
 # Image Viewer
 
+This is an image viewer plugin handling multiple views and zooming in/out.
+
 ## Usage
 
 This plugin expects several options.
@@ -29,7 +31,7 @@ The value supplied for the images option should be an array of image paths. They
 
 ### Dimensions
 
-The images in this viewer are used in two dimensions: `detail` and `zoom`. There are default values provided, but you can override each of the sizes uses an array of two integers for width and height respectively.
+The images in this viewer are used in two dimensions: `detail` and `zoom`. There are default values provided, but you can override each of the sizes using an array of two integers for width and height respectively.
 
 ### ImageUrlFormat
 
@@ -37,11 +39,11 @@ This function is called once for every combination of image dimension and image 
 
 ### Elements
 
-Elements is an object which can accepts several DOM elements.
+Elements is an object which expects several DOM elements.
 
 #### Previews
 
-Previews should be a container that has a set of links. By default, the preview links are found just using `previews.find('a')`, but if you need a more specific selector for finding links, such as those with a particular class, or if you would prefer to use an element other than links altogether, you can do so by overriding the `previewLinkSelector` option with the selector to be passed to the `find` method.
+Previews should be a container that has a set of links. By default, the preview links are found using `previews.find('a')`, but if you need a more specific selector for finding links, such as those with a particular class, or if you would prefer to use an element other than links altogether, you can do so by overriding the `previewLinkSelector` option with the selector to be passed to the `find` method.
 
 The links are traversed in order and each link is set to trigger updating the current image to the respective index of the `images` array.
 
