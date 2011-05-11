@@ -25,46 +25,46 @@ Typical usage:
         }
     });
 
-### `images`
+### images
 
 The value supplied for the images option should be an array of image paths. They may or may not be complete urls.
 
-### `dimensions`
+### dimensions
 
 The images in this viewer are used in two dimensions: `detail` and `zoom`. There are default values provided, but you can override each of the sizes using an array of two integers for width and height respectively.
 
-### `imageUrlFormat`
+### imageUrlFormat
 
 This function is called once for every combination of image dimension and image passed in for the `images` option. It receives three parameters: the image `src` or URL (the one passed in for the `images` option), and the respective `width` and `height` for the current dimension. It should return a valid image URL.
 
-### `elements`
+### elements
 
 Elements is an object which expects several DOM elements.
 
-#### `previews`
+#### previews
 
 Previews should be a container that has a set of links. By default, the preview links are found using `previews.find('a')`, but if you need a more specific selector for finding links, such as those with a particular class, or if you would prefer to use an element other than links altogether, you can do so by overriding the `previewLinkSelector` option with the selector to be passed to the `find` method.
 
 The links are traversed in order and each link is set to trigger updating the current image to the respective index of the `images` array.
 
 
-#### `stage`
+#### stage
 
 The stage is where the images are displayed and zoomed. This is likely an element whose style is set to `overflow: hidden` and where you display the original image.
 
-#### `zoomIn`
+#### zoomIn
 
 This is the element that will trigger zooming in.
 
-#### `zoomOut`
+#### zoomOut
 
 This is the element that will trigger zooming out.
 
-### `previewLinkSelector`
+### previewLinkSelector
 
 This option is used to override the selector used to bind the `showImage` method in children of the `previews` element. See above.
 
-### `zoomSteps`
+### zoomSteps
 
 This option is used to set the number of "steps" or times to zoom in before reaching the final dimensions for `zoom`. Defaults to 3.
 
