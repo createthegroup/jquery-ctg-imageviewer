@@ -1,4 +1,4 @@
-/*global  jQuery, isTouchDevice */
+/*global  jQuery */
 /*jshint eqeqeq: true, curly: true, white: true */
 
 (function ($) {
@@ -15,17 +15,18 @@
             imageUrlFormat: function () {
                 throw "jQuery.ctg.imageViewer: You are required to supply a function for 'imageUrlFormat'";
             },
-            previewLinkSelector: 'a'
+            previewLinkSelector: 'a',
+            onImageUpdate: function () {}
         },
 
         _create: function () {
 
             this._objects();
-            this._createBlocker();
-            this._events();
             this._calculateZoomSettings();
             this._initializeImages();
             this._resetImageAttributes();
+            this._createBlocker();
+            this._events();
 
             return;
         },
@@ -98,6 +99,8 @@
             this.objects.blocker = $('<div />');
 
             this.objects.blocker.css({
+                // Hack to make IE respect mouse events on blocker
+                background: 'url(' + this.images[0].detail + ') no-repeat -9999em 0',
                 position: 'absolute',
                 top:      0,
                 left:     0,
@@ -362,6 +365,10 @@
                             self._resetImageAttributes();
 
                             self.enable();
+
+                            if (self.options.onImageUpdate && typeof self.options.onImageUpdate === 'function') {
+                                self.options.onImageUpdate(self.images[index], index);
+                            }
                         })
                         ;
 
